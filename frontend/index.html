@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternSync | Admin Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">I</div>
+                <span>Intern<span class="brand-highlight">Sync</span></span>
+            </div>
+
+            <div class="sidebar-label">MAIN MENU</div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#" class="nav-link active" data-page="dashboard">
+                    <span class="nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="upload">
+                    <span class="nav-icon">⇧</span>
+                    <span>Excel Upload</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="students">
+                    <span class="nav-icon">♙</span>
+                    <span>Student Search</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="progress">
+                    <span class="nav-icon">▤</span>
+                    <span>Progress Tracking</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="evaluation">
+                    <span class="nav-icon">☆</span>
+                    <span>Evaluation</span>
+                </a>
+
+                <a href="#" class="nav-link" data-page="certificates">
+                    <span class="nav-icon">♧</span>
+                    <span>Certificates</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-avatar">AD</div>
+                <div class="admin-details">
+                    <strong>Admin User</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div>
+                    <h2>Admin Dashboard</h2>
+                    <p>Welcome back! Here's your internship overview.</p>
+                </div>
+
+                <div class="topbar-right">
+                    <button class="notification-btn" aria-label="Notifications">
+                        ♧
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="topbar-avatar">AD</div>
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD PAGE -->
+            <section class="page-content" id="dashboard">
+
+                <div class="page-heading">
+                    <div>
+                        <h1>Dashboard Overview</h1>
+                        <p>Monitor and manage your internship program.</p>
+                    </div>
+
+                    <button class="date-btn">▦ &nbsp; This Month</button>
+                </div>
+
+
+                <!-- STATISTIC CARDS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Total Students</span>
+                            <div class="stat-icon blue">♙</div>
+                        </div>
+                        <h2>1,250</h2>
+                        <p class="stat-note">Registered students</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Active Internships</span>
+                            <div class="stat-icon purple">▤</div>
+                        </div>
+                        <h2>856</h2>
+                        <p class="stat-note">Currently in progress</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Completed</span>
+                            <div class="stat-icon green">✓</div>
+                        </div>
+                        <h2>320</h2>
+                        <p class="stat-note">Successfully completed</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Certificates Issued</span>
+                            <div class="stat-icon orange">♧</div>
+                        </div>
+                        <h2>285</h2>
+                        <p class="stat-note">Certificates generated</p>
+                    </div>
+
+                </div>
+
+
+                <!-- CHART SECTION -->
+                <div class="dashboard-grid">
+
+                    <div class="content-card chart-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Internship Overview</h3>
+                                <p>Monthly internship activity</p>
+                            </div>
+                            <span class="chart-label">2026</span>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="internshipChart"></canvas>
+                        </div>
+                    </div>
+
+
+                    <!-- PROGRESS CARD -->
+                    <div class="content-card progress-card">
+                        <div class="card-heading">
+                            <div>
+                                <h3>Internship Status</h3>
+                                <p>Student distribution</p>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span>Completed</span>
+                                <strong>320</strong>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill completed-fill"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span>In Progress</span>
+                                <strong>856</strong>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill active-fill"></div>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span>Not Started</span>
+                                <strong>74</strong>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill pending-fill"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT STUDENTS TABLE -->
+                <div class="content-card table-card">
+
+                    <div class="card-heading">
+                        <div>
+                            <h3>Recent Students</h3>
+                            <p>Latest registered internship students</p>
+                        </div>
+
+                        <a href="#" class="view-all">View All →</a>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Student ID</th>
+                                    <th>Internship</th>
+                                    <th>Progress</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Rahul Sharma</td>
+                                    <td>INT001</td>
+                                    <td>Web Development</td>
+                                    <td>85%</td>
+                                    <td><span class="status completed-status">Completed</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Priya Kumar</td>
+                                    <td>INT002</td>
+                                    <td>Python Development</td>
+                                    <td>65%</td>
+                                    <td><span class="status active-status">In Progress</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Arjun Rao</td>
+                                    <td>INT003</td>
+                                    <td>Data Analytics</td>
+                                    <td>40%</td>
+                                    <td><span class="status active-status">In Progress</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Ananya Shetty</td>
+                                    <td>INT004</td>
+                                    <td>UI/UX Design</td>
+                                    <td>20%</td>
+                                    <td><span class="status pending-status">Not Started</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
